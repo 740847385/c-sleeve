@@ -65,17 +65,20 @@ Page({
                 themeESpu = data.spu_list.slice(0, 8)
             }
         }
-
+        const themeF = await theme.getHomeLocationF()
         const bannerB = await Banner.getHomeLocationB()
         const grid = await Category.getHomeLocationC()
         const activityD = await Activity.getHomeLocationD()
+        const bannerG = await Banner.getHomeLocationG()
         this.setData({
             themeA,
             themeE,
+            themeF,
             themeESpu,
             bannerB,
             grid,
-            activityD
+            activityD,
+            bannerG
 
         })
 
