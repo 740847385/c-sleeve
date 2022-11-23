@@ -70,6 +70,7 @@ Page({
         const grid = await Category.getHomeLocationC()
         const activityD = await Activity.getHomeLocationD()
         const bannerG = await Banner.getHomeLocationG()
+        const themeH = theme.getHomeLocationH()
         this.setData({
             themeA,
             themeE,
@@ -78,7 +79,8 @@ Page({
             bannerB,
             grid,
             activityD,
-            bannerG
+            bannerG,
+            themeH
 
         })
 

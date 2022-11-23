@@ -1,8 +1,13 @@
 <view class="container">
-    <image src="{{banner.img}}"></image>
+    <image class="title" src="{{banner.img}}"></image>
     <view class="inner-container">
-        <image src="{{leftItem.img}}"></image>
-        <image src="{{rightTopItem.img}}"></image>
-        <image src="{{rightBottomItem.img}}"></image>
+        <view hover-class="rect-hover" hover-stay-time="300">
+            <image class="left" src="{{leftItem.img}}"></image>
+        </view>
+        <view class="right-container">
+            <image class="right-size" src="{{rightTopItem.img}}"></image>
+            <image class="right-size" src="{{rightBottomItem.img}}"></image>
+        </view>
+
     </view>
 </view>
