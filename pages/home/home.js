@@ -4,6 +4,8 @@ import {Theme} from "../../model/theme";
 import {Banner} from "../../model/banner";
 import {Category} from "../../model/category";
 import {Activity} from "../../model/activity";
+import {Paging} from "../../utils/paging";
+import {SpuPaging} from "../../model/spu-paging";
 
 Page({
 
@@ -22,6 +24,13 @@ Page({
      */
     async onLoad(options) {
         this.initAllData()
+    },
+    async initBottomSpuList() {
+        const paging = await SpuPaging.getLatestPaging()
+        const data = paging.getMoreData()
+        if (!data) {
+            return
+        }
     },
 
     /**
