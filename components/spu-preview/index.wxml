@@ -21,6 +21,6 @@
                  value="{{p.slashedPrice(data.price,data.discount_price).price}}">
 
         </l-price>
-        <text>{{data.subtitle}}</text>
+        <text class="subtitle">{{data.subtitle}}</text>
     </view>
 </view>
