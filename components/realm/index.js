@@ -1,4 +1,7 @@
 // components/realm/index.js
+import {Spu} from "../../model/spu";
+import {FenceGroup} from "../models/fence-group";
+
 Component({
     /**
      * 组件的属性列表
@@ -12,8 +15,27 @@ Component({
      */
     data: {},
 
+    observers: {
+        'spu': function (spu) {
+            if (!spu) {
+                return
+            }
+
+            const fenceGroup = new FenceGroup(spu);
+            fenceGroup.initFences()
+            this.bindInitData(fenceGroup)
+
+        }
+    },
+
     /**
      * 组件的方法列表
      */
-    methods: {}
+    methods: {
+        bindInitData(fenceGroup) {
+            this.setData({
+                fences: fenceGroup.fences
+            })
+        }
+    }
 })
