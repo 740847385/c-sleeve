@@ -11,6 +11,20 @@ class FenceGroup {
         this.skuList = spu.sku_list
     }
 
+    getDefaultSku() {
+        const defaultSkuId = this.spu.default_sku_id
+        if (!defaultSkuId) {
+            return
+        }
+        return this.skuList.find(s => s.id === defaultSkuId)
+    }
+
+    getSku(skuCode) {
+        const fullSkuCode = this.spu.id + '$' + skuCode
+        const sku = this.spu.sku_list.find(s => s.code === fullSkuCode)
+        return sku ? sku : null
+    }
+
     initFences() {
         const matrix = this._createMatrix(this.skuList)
         const fences = []
@@ -29,6 +43,27 @@ class FenceGroup {
             m.push(sku.specs)
         })
         return new Matrix(m)
+    }
+
+    eachCell(cb) {
+        for (let i = 0; i < this.fences.length; i++) {
+            for (let j = 0; j < this.fences[i].cells.length; j++) {
+                const cell = this.fences[i].cells[j]
+                cb(cell, i, j)
+            }
+        }
+    }
+
+    setCellStatusById(cellId, status) {
+        this.eachCell((cell) => {
+            if (cell.id === cellId) {
+                cell.status = status
+            }
+        })
+    }
+
+    setCelStatusByXY(x, y, status) {
+        this.fences[x].cells[y].status = status
     }
 
 }
