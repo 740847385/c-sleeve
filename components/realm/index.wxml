@@ -39,6 +39,8 @@
         <s-fence x="{{index}}" bind:celltap="onCellTap" fence="{{item}}"></s-fence>
     </block>
     <view class="counter-container">
-        <!--        <l-coun-->
+        <s-counter>
+
+        </s-counter>
     </view>
 </view>
